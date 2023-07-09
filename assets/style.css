@@ -22,7 +22,12 @@ aside{
     display: flex;
     flex-direction: column;
     flex:1;
+    
 }
+
+aside form input[type="submit"] {
+    background-color: aquamarine;
+  }
 
 form > *{
     margin-bottom: 10px;
@@ -37,9 +42,6 @@ button{
     margin-bottom: 20px;
 }
 
-.btn:hover{
-    color: beige;
-}
 
 section{
     flex: 4 5;
@@ -60,17 +62,21 @@ h4{
     padding-left: 1%;
 }
 
-#fiveDatForcast{
+#fiveDayForcast {
     display: flex;
     flex-wrap: wrap;
-
 }
 
-#fiveDayForcast>*{
+#fiveDayForcast > * {
     background-color: rgb(17, 17, 45);
     color: aliceblue;
     margin: 1%;
-    flex: 1;
-    padding-left: 1%;
-    padding-top: 5px;
+    flex: 1 0 5%; 
+    padding: 1%;
+}
+
+@media screen and (max-width: 768px) {
+    #fiveDayForcast > * {
+    flex: 1 1 100%;
+}
 }

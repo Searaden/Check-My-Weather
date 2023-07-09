@@ -13,11 +13,17 @@ var weatherAPIKey = prompt('insert API Key');
 var citySearched;
 var longitude;
 var latitude;
-var history =[];
+var searchHistory =[];
 
 init();
 
-//de;
+//search history buttons
+search.addEventListener('click', function(event) {
+    if (event.target.tagName === 'BUTTON') {
+        citySearched = event.target.innerHTML;
+        renderWeather(citySearched, false);
+    }
+});
 
 //city search
 submitCity.addEventListener('submit', function(event) {
@@ -42,21 +48,21 @@ async function renderWeather (city, newSearch){
         longitude = data[0].lon;
     });
 
-    //Get weather using latitude and longitude we got from above search
-    await fetch (currentWeather + '&lat' + latitude + '&lon' + longitude + '&appid=' + weatherAPIKey)
-    .then(function(response){
+    // Get current day
+    await fetch(currentWeather + '&lat=' + latitude + '&lon=' + longitude + '&appid=' + weatherAPIKey)
+    .then(function (response) {
         return response.json();
     })
     .then(function (data) {
         today.children[0].textContent = citySearched + dayjs().format(' (MM/DD/YYYY)');
-        today.children[1].src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
+        today.children[1].src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png'
         today.children[2].textContent = `Temp: ${data.main.temp}\xb0F`;
         today.children[3].textContent = `Wind: ${data.wind.speed} MPH`;
         today.children[4].textContent = `Humidity: ${data.main.humidity} %`;
     });
 
-    //Get 5 day forcast
-    await fetch(fiveDay + '&lat' + latitude + '&lon' + longitude + '&appid=' +weatherAPIKey)
+    //Get 5 day forcast using geoloacations
+    await fetch(fiveDay + '&lat=' + latitude + '&lon=' + longitude + '&appid=' +weatherAPIKey)
     .then(function(response){
         return response.json();
     })
@@ -70,7 +76,7 @@ async function renderWeather (city, newSearch){
         }
     });
         
-    // Append new searches to the search history and updates local storage
+    // add search history
         if (newSearch === true) {
             var button = document.createElement('button');
             button.textContent = citySearched;
@@ -83,7 +89,7 @@ async function renderWeather (city, newSearch){
     
     }
 
-    // Initializes the webpage with previous searches stored in local storage
+    // Initializes with search history on local data
 function init() {
     var storedSearches = JSON.parse(localStorage.getItem('searchHistory'));
 
