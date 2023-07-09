@@ -25,9 +25,7 @@ aside{
     
 }
 
-aside form input[type="submit"] {
-    background-color: aquamarine;
-  }
+
 
 form > *{
     margin-bottom: 10px;
