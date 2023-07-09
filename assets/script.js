@@ -8,7 +8,7 @@ var fiveDayForcast = document.querySelector('#fiveDayForcast');
 
 const currentWeather = 'https://api.openweathermap.org/data/2.5/weather?units=imperial';
 const fiveDay = 'https://api.openweathermap.org/data/2.5/forecast?units=imperial';
-const geocode = 'http://api.openweathermap.org/geo/1.0/direct?q='
+const geocode = 'https://api.openweathermap.org/geo/1.0/direct?q='
 var weatherAPIKey = prompt('insert API Key');
 var citySearched;
 var longitude;
