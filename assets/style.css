@@ -1,0 +1,76 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    background-color:rgb(47, 47, 142)
+}
+
+h1{
+    text-align: center;
+    position: relative;
+    left: 10%;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+aside{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+
+form > *{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+input[type=search]{
+    background-color: rgb(80, 70, 219);
+}
+
+button{
+    margin-bottom: 20px;
+}
+
+.btn:hover{
+    color: beige;
+}
+
+section{
+    flex: 4 5;
+}
+
+section >*{
+    margin: 10px;
+}
+
+#today{
+    margin-top: 0px;
+    border: 2px black;
+    padding-left: 1%;
+
+}
+
+h4{
+    padding-left: 1%;
+}
+
+#fiveDatForcast{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+#fiveDayForcast>*{
+    background-color: rgb(17, 17, 45);
+    color: aliceblue;
+    margin: 1%;
+    flex: 1;
+    padding-left: 1%;
+    padding-top: 5px;
+}
